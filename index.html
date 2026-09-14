@@ -3,49 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Розклад ІР-21</title>
+    <title>Розклад ІР-31</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #4285F4; --bg: #f8f9fa; --text: #333; --white: #ffffff; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .header { background: var(--white); padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; text-align: center; }
-        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        select, input, button { padding: 12px; border-radius: 8px; border: 1px solid #ddd; font-size: 1rem; outline: none; }
-        button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        button:hover { opacity: 0.9; }
-        .tabs { display: flex; gap: 5px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; }
-        .tab { padding: 10px 20px; background: #e0e0e0; border-radius: 20px; cursor: pointer; white-space: nowrap; }
-        .tab.active { background: var(--primary); color: white; }
-        .lesson-card { background: var(--white); padding: 15px; border-radius: 12px; border-left: 6px solid var(--primary); margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .lesson-time { font-weight: bold; color: var(--primary); }
-        .lesson-details { font-size: 0.9rem; color: #666; margin-top: 5px; }
-        
-        /* Додане поле для стилізації посилання */
-        .lesson-link { 
-            display: block; 
-            margin-top: 8px; 
-            color: blue !important; 
-            text-decoration: underline !important; 
+        :root {
+            --bg-page: #0a1112;
+            --bg-card: rgba(14, 25, 27, 0.85);
+            --border-card: rgba(86, 122, 120, 0.28);
+            --primary: #5c8a87;
+            --ice-accent: #a3c4c2;
+            --text-main: #dce7e6;
+            --text-muted: #7c9493;
+            --link-color: #6bb3b0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(180deg, #091214 0%, #0d1a1c 50%, #060b0c 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            padding: 24px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header h2 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            color: var(--ice-accent);
+            font-size: 1.6rem;
+            margin: 0;
+            text-shadow: 0 0 15px rgba(92, 138, 135, 0.3);
+        }
+
+        .header p {
+            margin: 6px 0 0 0;
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        .subgroup-label { font-size: 0.8rem; background: #eee; padding: 2px 8px; border-radius: 10px; float: right; }
-        .full-schedule-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
-        .full-schedule-table th, .full-schedule-table td { padding: 12px; border: 1px solid #eee; text-align: left; font-size: 0.85rem; }
-        .full-schedule-table th { background: var(--primary); color: white; }
+        /* Поле управління */
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        /* Вибір підгрупи приховано, щоб не ламати зчитування в JS */
+        #subgroup-select {
+            display: none;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-card);
+            background: rgba(10, 18, 20, 0.9);
+            color: var(--ice-accent);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            color-scheme: dark;
+            transition: border-color 0.2s ease;
+        }
+
+        input[type="date"]:focus {
+            border-color: var(--primary);
+        }
+
+        /* Вкладки перемикання */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px 18px;
+            background: rgba(18, 32, 34, 0.7);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+        }
+
+        .tab:hover {
+            background: rgba(28, 48, 51, 0.8);
+            color: var(--text-main);
+        }
+
+        .tab.active {
+            background: rgba(45, 74, 76, 0.8);
+            border-color: var(--ice-accent);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(92, 138, 135, 0.35);
+        }
+
+        /* Картки занять */
+        .lesson-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-left: 5px solid var(--primary);
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+            transition: border-color 0.2s;
+        }
+
+        .lesson-card:hover {
+            border-left-color: var(--ice-accent);
+        }
+
+        .lesson-time {
+            font-weight: 600;
+            color: var(--ice-accent);
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+        }
+
+        .name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #ffffff;
+            margin-top: 4px;
+        }
+
+        .lesson-details {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        .lesson-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--link-color) !important;
+            text-decoration: underline !important;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+
+        .lesson-link:hover {
+            color: #ffffff !important;
+        }
+
+        /* Приховати мітку підгруп */
+        .subgroup-label {
+            display: none !important;
+        }
+
+        /* Стилі для контенту днів / тижнів */
+        #content-area h3 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            color: var(--ice-accent);
+            border-bottom: 1px solid var(--border-card);
+            padding-bottom: 8px;
+            margin: 18px 0 12px 0;
+            font-size: 1.15rem;
+        }
+
+        #content-area h4 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.8px;
+            color: var(--primary);
+            border-bottom: 1px solid rgba(86, 122, 120, 0.2);
+            padding-top: 14px;
+            padding-bottom: 6px;
+            margin: 8px 0 8px 0;
+            font-size: 1rem;
+        }
+
+        .empty {
+            color: var(--text-muted);
+            padding: 10px 0;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="header">
-        <h2>Розклад групи ІР-21</h2>
+        <h2>Розклад групи ІР-31</h2>
         <p id="current-info-display"></p>
     </div>
 
     <div class="controls">
+        <!-- Елемент збережено для стабільної роботи функції refreshView() у script.js -->
         <select id="subgroup-select" onchange="refreshView()">
+            <option value="0" selected>Спільна</option>
             <option value="1">1 Підгрупа</option>
             <option value="2">2 Підгрупа</option>
         </select>
@@ -55,7 +229,7 @@
     <div class="tabs">
         <div class="tab active" id="tab-day" onclick="setView('day')">Сьогодні / Дата</div>
         <div class="tab" id="tab-week" onclick="setView('week')">На тиждень</div>
-        <div class="tab" id="tab-full" onclick="setView('full')">Усі 19 тижнів</div>
+    
     </div>
 
     <div id="content-area"></div>
