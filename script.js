@@ -1,40 +1,526 @@
-// Повна база даних розкладу ІР-21 (2026 рік)
+// Повна база даних розкладу ІР-31 (2026-2027 рік)
 const scheduleData = [
-    // ПОНЕДІЛОК
-    { day: 1, time: "09:00-10:20", name: "Менеджмент та маркетинг (Л)", info: "9т (Кухта П.В.) ", link: "https://www.google.com/url?q=https://us05web.zoom.us/j/8336541798?pwd%3DUgaV2fwPRbrMDV4Njf2S3VaAzi5sSt.1&sa=D&source=editors&ust=1774220036237237&usg=AOvVaw1vOi-4vOj2jmIZy0rijPYY", dates: ["2026-01-26", "2026-02-02", "2026-02-09", "2026-02-16", "2026-02-23", "2026-03-02", "2026-03-09", "2026-03-16", "2026-03-23"], sub: 0 },
-    { day: 1, time: "09:00-10:20", name: "КЛ та дискретна математика (Л)", info: "2т (Дружинін В.А.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AHkj3ll4ll09M0ZlhUKWV7v3Y8eB26oV8yDhcvTLO8e01%2540thread.tacv2/conversations?groupId%3D8c372305-903b-4da6-b35d-053dcc935568%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036241318&usg=AOvVaw3qhqVs8M4ENHwBbtKScWvU", dates: ["2026-03-30", "2026-04-06"], sub: 0 },
-    { day: 1, time: "10:30-11:50", name: "Організація баз даних (Л)", info: "12т (Кравченко О.В.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/32752717408621?p%3DGlm4WUOMIb0GK66rE7&sa=D&source=editors&ust=1774220036249960&usg=AOvVaw11yxpHc01C5kpuXMUn2LZp", range: ["2026-01-26", "2026-04-13"], sub: 0 },
-    { day: 1, time: "12:10-13:30", name: "Розподілені системи (Л)", info: "8т (Кравченко О.В.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/39511022754590?p%3DWmdeNFrT7A9zLhcUQJ&sa=D&source=editors&ust=1774220036256446&usg=AOvVaw3aqVU6ClJIcZEltAjViG0h", dates: ["2026-01-26", "2026-02-02", "2026-02-16", "2026-03-02", "2026-03-16", "2026-03-30", "2026-04-13", "2026-04-27"], sub: 0 },
-    { day: 1, time: "12:10-13:30", name: "Основи схемотехніки (Л)", info: "9т занять (Дружинін В.А.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253Ab77G_3m5ETgdOYx8w2hx3_oTuNUXvUm8toVX5pPvV6s1%2540thread.tacv2/conversations?groupId%3Df31b3473-db54-461d-ba1e-09282ef939d2%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036261859&usg=AOvVaw3pcrx7ZTQcqMzg5EBVYVCV", dates: ["2026-02-09", "2026-02-23", "2026-03-09", "2026-03-23", "2026-04-06", "2026-04-20", "2026-05-04", "2026-05-11", "2026-05-18"], sub: 0 },
+    // ПОНЕДІЛОК (day: 1)
+    
+    // --- 09:00-10:20 ---
+    {
+        day: 1,
+        time: "09:00-10:20",
+        name: "Теорія систем та системний аналіз (Л)",
+        info: "(2т Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253APi674oI2F7i62XUbZfMtVpFEf_4FUAW_MzWPUxApPiU1%2540thread.tacv2/conversations?groupId%3Db1f50dfa-1515-4667-8439-5a3a8b928aee%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474514487&usg=AOvVaw0EMiLLSbrKeTt9nm5TYksU", 
+        dates: [ "2026-10-19"],// і субота 17.10
+        sub: 0
+    },
+    {
+        day: 1,
+        time: "09:00-10:20",
+        name: "Теорія автоматичного управління (Л)",
+        info: "4т (Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AClcZG5lMdMYt7hi3FdWOb1HRDIlSR0De1ZP-n-UHKME1%2540thread.tacv2/conversations?groupId%3D975bf78f-ec66-4188-b8e0-b9d6c23839a6%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474518604&usg=AOvVaw3MRELZSI9I9CRBHvE0Az5k", 
+        dates: ["2026-10-26", "2026-11-02", "2026-11-09", "2026-11-16"],
+        sub: 0
+    },
+    {
+        day: 1,
+        time: "09:00-10:20",
+        name: "Технологія створення програмних продуктів (Л)",
+        info: "4т (доц. Кравченко О.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AhaSU_3hbsgI58chkDy8XYQiU6ivn54k1Z4i42O6VpbI1%2540thread.tacv2/conversations?groupId%3D4113c5a6-5a26-43e8-85b1-87f3114b8d0d%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474516159&usg=AOvVaw2AUvKP-rxdefXwIVTv1AFm", // Технології створення ПП
+        dates: ["2026-09-21", "2026-09-28", "2026-10-05", "2026-10-12"],
+        sub: 0
+    },
 
-    // ВІВТОРОК
-    { day: 2, time: "09:00-10:20", name: "Іноземна мова (Пр)", info: "14т (Вакуленко Т.О.)", link: "https://www.google.com/url?q=https://us04web.zoom.us/j/77779060349?pwd%3DPk4eVHiBD5KWjFqhQ9yzqDh0QIpgqO.1&sa=D&source=editors&ust=1774220036316958&usg=AOvVaw28_Ipb4MHJDB-YJ9sk7nc8", range: ["2026-02-10", "2026-05-12"], sub: 1 },
-    { day: 2, time: "09:00-10:20", name: "Іноземна мова (Пр)", info: "14т (Голубовська І.О.)", link: "https://www.google.com/url?q=https://us04web.zoom.us/j/76096774044?pwd%3DMkE4M1Fidk1PTnk0NnQ3VVJGRE13QT09&sa=D&source=editors&ust=1774220036317070&usg=AOvVaw1j84F3hPbUJZRXqoq7mZ9K", range: ["2026-02-10", "2026-05-12"], sub: 2 },
-    { day: 2, time: "10:30-11:50", name: "Менеджмент та маркетинг (С)", info: "17т (Кухта П.В.)", link: "https://www.google.com/url?q=https://us05web.zoom.us/j/8336541798?pwd%3DUgaV2fwPRbrMDV4Njf2S3VaAzi5sSt.1&sa=D&source=editors&ust=1774220036325284&usg=AOvVaw0dwGkSv_kF2RfMdQtTRVqP", range: ["2026-02-10", "2026-06-02"], sub: 0 },
-    { day: 2, time: "12:10-13:30", name: "Організація баз даних (лаб)", info: "9т (Кравченко О.В.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/3201097711308?p%3D1VbyYOALmR30TeWZRq&sa=D&source=editors&ust=1774220036336603&usg=AOvVaw1hg-_F1lz8aXzusXuld3Jh", dates: ["2026-01-27", "2026-02-24", "2026-03-10", "2026-03-24", "2026-04-07", "2026-04-21", "2026-05-05", "2026-05-19", "2026-06-02"], sub: 1 },
-    { day: 2, time: "12:10-13:30", name: "Основи схемотехніки (лаб)", info: "12т (Дружинін В.А.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253Ab77G_3m5ETgdOYx8w2hx3_oTuNUXvUm8toVX5pPvV6s1%2540thread.tacv2/conversations?groupId%3Df31b3473-db54-461d-ba1e-09282ef939d2%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036336708&usg=AOvVaw0RKqwqsGvkC5qMayCtwLUW", dates: ["2026-02-24", "2026-03-10", "2026-03-24", "2026-04-07", "2026-04-14", "2026-04-21", "2026-04-28", "2026-05-05", "2026-05-12", "2026-05-19", "2026-05-26", "2026-06-02"], sub: 2 },
-    { day: 2, time: "13:40-15:00", name: "Основи схемотехніки (лаб)", info: "12т (Дружинін В.А.)", sub: 1, link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253Ab77G_3m5ETgdOYx8w2hx3_oTuNUXvUm8toVX5pPvV6s1%2540thread.tacv2/conversations?groupId%3Df31b3473-db54-461d-ba1e-09282ef939d2%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036347850&usg=AOvVaw2lv3i8AakJVQrjIgh-O0-i", dates: ["2026-02-24", "2026-03-10", "2026-03-24", "2026-04-07", "2026-04-14", "2026-04-21", "2026-04-28", "2026-05-05", "2026-05-12", "2026-05-19", "2026-05-26", "2026-06-02"] },
-    { day: 2, time: "13:40-15:00", name: "Організація баз даних (лаб)", info: "9т (Кравченко О.В.)", sub: 2, link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/35622238380684?p%3DOklklKTSTLXVVvKIhQ&sa=D&source=editors&ust=1774220036347970&usg=AOvVaw2rRkX0yEHR71W3L7JZWwlG", dates: ["2026-01-27", "2026-02-24", "2026-03-10", "2026-03-24", "2026-04-07", "2026-04-21", "2026-05-05", "2026-05-19", "2026-06-02"] },
-    { day: 2, time: "15:10-16:30", name: "Організація баз даних (Пр)", info: "Тільки 27.01", link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/32752717408621?p%3DGlm4WUOMIb0GK66rE7&sa=D&source=editors&ust=1774220036359006&usg=AOvVaw1Kko0Xy3tFD2yANJqEyejR", dates: ["2026-01-27"], sub: 0 },
+    // --- 10:30-11:50 ---
+    {
+        day: 1,
+        time: "10:30-11:50",
+        name: "Філософія (Л)",
+        info: "6т Савинська І.В.",
+        link: "https://www.google.com/url?q=https://meet.google.com/jba-ugce-ysm?pli%3D1&sa=D&source=editors&ust=1789416474517122&usg=AOvVaw3vHJB7eyAXWebg_wzOacFZ",
+        dates: ["2026-09-14", "2026-09-21", "2026-09-28", "2026-10-05", "2026-10-12", "2026-10-19"],
+        sub: 0
+    },
+    {
+        day: 1,
+        time: "10:30-11:50",
+        name: "Теорія автоматичного управління (Л)",
+        info: "5т (Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AClcZG5lMdMYt7hi3FdWOb1HRDIlSR0De1ZP-n-UHKME1%2540thread.tacv2/conversations?groupId%3D975bf78f-ec66-4188-b8e0-b9d6c23839a6%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474518604&usg=AOvVaw3MRELZSI9I9CRBHvE0Az5k", // ТАУ
+        dates: ["2026-10-26", "2026-11-02", "2026-11-09", "2026-11-16"],// і субота  "2026-10-07"
 
-    // СЕРЕДА
-    { day: 3, time: "09:00-10:20", name: "КЛ та дискретна математика (Л)", info: "13т (Дружинін В.А.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AHkj3ll4ll09M0ZlhUKWV7v3Y8eB26oV8yDhcvTLO8e01%2540thread.tacv2/conversations?groupId%3D8c372305-903b-4da6-b35d-053dcc935568%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036390130&usg=AOvVaw36T0sXzM6BPjm2MrgSEEuf", range: ["2026-02-11", "2026-05-06"], sub: 0 },
-    { day: 3, time: "10:30-11:50", name: "Науковий образ світу (Л)", info: "17т (Вишивана І.Г.)", link: "https://www.google.com/url?q=https://meet.google.com/pwh-mpcq-ced&sa=D&source=editors&ust=1774220036398580&usg=AOvVaw29Ou6OkAjVk-gwvX1XCXAN", range: ["2026-01-28", "2026-05-20"], sub: 0 },
-    { day: 3, time: "12:10-13:30", name: "Побудова та безпека мереж (Л)", info: "14т (Палій С.В.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AZGM-JbZQH1jth3xw1akbbxmwD6df6qQxiMh_VlZZTUE1%2540thread.tacv2/conversations?groupId%3D8a890812-182c-4988-a40c-62d4f335f4b2%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036405993&usg=AOvVaw0lvHts8I98MeCwkDKp6Iax", range: ["2026-01-28", "2026-04-29"], sub: 0 },
+        sub: 0
+    },
 
-    // ЧЕТВЕР
-    { day: 4, time: "10:30-11:50", name: "Організація баз даних (Пр)", info: "7т (Кравченко О.В.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/39415958595572?p%3D0smc1vyY9SqAuv8dzf&sa=D&source=editors&ust=1774220036456676&usg=AOvVaw0hJY-i3mt9Sf2vO5EW-emq", range: ["2026-02-12", "2026-03-26"], sub: 0 },
-    { day: 4, time: "12:10-13:30", name: "КЛ та дискретна математика", info: "12т (Терещук Г.М.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AHkj3ll4ll09M0ZlhUKWV7v3Y8eB26oV8yDhcvTLO8e01%2540thread.tacv2/conversations?groupId%3D8c372305-903b-4da6-b35d-053dcc935568%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036463744&usg=AOvVaw3LaQWdJFV9YvhcUhasTrm_", dates: ["2026-02-12", "2026-02-19","2026-03-12","2026-03-19","2026-03-26","2026-04-02","2026-04-09","2026-04-16","2026-04-23","2026-04-30","2026-05-07", "2026-05-14"], sub: 0 },
-    { day: 4, time: "13:40-15:00", name: "КЛ та дискретна математика (Пр)", info: "8т (Терещук Г.М.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AHkj3ll4ll09M0ZlhUKWV7v3Y8eB26oV8yDhcvTLO8e01%2540thread.tacv2/conversations?groupId%3D8c372305-903b-4da6-b35d-053dcc935568%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036471228&usg=AOvVaw1qSMS9ZiVvFjS4ux5vYib6", range: ["2026-03-26", "2026-05-14"], sub: 0 },
+    // --- 12:10-13:30 ---
+    {
+        day: 1,
+        time: "12:10-13:30",
+        name: "Кібернетична безпека підприємства (Л)",
+        info: "4т (доц. Борисенко І.І.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/324553793992041?p%3DWuRiPSEJsfqwU6ZB1i&sa=D&source=editors&ust=1789416474519697&usg=AOvVaw37fsDCFh7E_nDfgmJ-9AlH", // teams.microsoft
+        dates: ["2026-09-04", "2026-09-21", "2026-09-28"],// і субота  "2026-10-17"
+        sub: 0
+    },
+    {
+        day: 1,
+        time: "12:10-13:30",
+        name: "Теорія систем та системний аналіз (Л)",
+        info: "7т (Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253APi674oI2F7i62XUbZfMtVpFEf_4FUAW_MzWPUxApPiU1%2540thread.tacv2/conversations?groupId%3Db1f50dfa-1515-4667-8439-5a3a8b928aee%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474520829&usg=AOvVaw0jctevIvnMxeUv8ttIOa5_", // teams.microsoft.com
+        dates: [
+            "2026-10-05", 
+            "2026-10-12", 
+            "2026-10-19", 
+            "2026-10-26", 
+            "2026-11-02", 
+            "2026-11-09", 
+            "2026-11-16"
+        ],
+        sub: 0
+    },
+    // ВІВТОРОК (day: 2)
 
-    // П'ЯТНИЦЯ
-    { day: 5, time: "10:30-11:50", name: "Побудова корп. мереж (лаб)", info: "17т (Палій С.В.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AZGM-JbZQH1jth3xw1akbbxmwD6df6qQxiMh_VlZZTUE1%2540thread.tacv2/conversations?groupId%3D8a890812-182c-4988-a40c-62d4f335f4b2%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036520064&usg=AOvVaw14Ua1TQHxX1-UOHqe8jtrx", range: ["2026-02-13", "2026-06-05"], sub: 1 },
-    { day: 5, time: "10:30-11:50", name: "Розподілені системи (лаб)", info: "17т (Безлугий В.І.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/37998531661439?p%3DeXzE6Hcha8jJ3gsyuQ&sa=D&source=editors&ust=1774220036520158&usg=AOvVaw0UYrK-WV5KffolWjhXccf9", range: ["2026-02-13", "2026-06-05"], sub: 2 },
-    { day: 5, time: "12:10-13:30", name: "Розподілені системи (лаб)", info: "17т (Безлугий В.І.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/34726535254170?p%3D6huYoV51kP4b1vakIR&sa=D&source=editors&ust=1774220036526707&usg=AOvVaw1-oNbh7Q4X9Hk8tmrNlqYT", range: ["2026-02-13", "2026-06-05"], sub: 1 },
-    { day: 5, time: "12:10-13:30", name: "Побудова корп. мереж (лаб)", info: "17т (Михальчук В.В.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AZGM-JbZQH1jth3xw1akbbxmwD6df6qQxiMh_VlZZTUE1%2540thread.tacv2/conversations?groupId%3D8a890812-182c-4988-a40c-62d4f335f4b2%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036526802&usg=AOvVaw0_0Vmt6hCA56rR9URJEyEP", range: ["2026-02-13", "2026-06-05"], sub: 2 },
-    { day: 5, time: "13:40-15:00", name: "Побудова корп. мереж (лаб)", info: "3т (Палій С.В.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AZGM-JbZQH1jth3xw1akbbxmwD6df6qQxiMh_VlZZTUE1%2540thread.tacv2/conversations?groupId%3D8a890812-182c-4988-a40c-62d4f335f4b2%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036533512&usg=AOvVaw1XS1s6Rd4KWJbcoHlUX7Gs", dates: ["2026-02-20", "2026-04-03", "2026-04-10"], sub: 1 },
-    { day: 5, time: "13:40-15:00", name: "Побудова корп. мереж (лаб)", info: "3т (Михальчук В.В.)", link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AZGM-JbZQH1jth3xw1akbbxmwD6df6qQxiMh_VlZZTUE1%2540thread.tacv2/conversations?groupId%3D8a890812-182c-4988-a40c-62d4f335f4b2%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1774220036533644&usg=AOvVaw38tYs1aXGn9hvAGtW_SVNY", dates: ["2026-02-20", "2026-04-03", "2026-04-10"], sub: 2 },
+    // --- 09:00-10:20 ---
+    {
+        day: 2,
+        time: "09:00-10:20",
+        name: "Проектування інформаційних систем (Л)",
+        info: "3т (доц. Гладка М.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253ATPmD9-2x-ev7X6k4sklG9ZO_Alne3sxs3dGitxd0S5E1%2540thread.tacv2/conversations?groupId%3D86c17497-45dd-404c-8d9d-1334a0867295%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474531338&usg=AOvVaw3F3HMjS8uZp8eKEpdijGoW", // Проектування інформаційних систем
+        dates: ["2026-09-15", "2026-09-22", "2026-09-29"],
+        sub: 0
+    },
+    {
+        day: 2,
+        time: "09:00-10:20",
+        name: "Теорія систем та системний аналіз (Пр)",
+        info: "8т (Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253APi674oI2F7i62XUbZfMtVpFEf_4FUAW_MzWPUxApPiU1%2540thread.tacv2/conversations?groupId%3Db1f50dfa-1515-4667-8439-5a3a8b928aee%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474532969&usg=AOvVaw3wrklBY4H-jauu2ZOAvQDY", // teams.microsoft.com
+        dates: [
+            "2026-10-06", 
+            "2026-10-13", 
+            "2026-10-20", 
+            "2026-10-27", 
+            "2026-11-03", 
+            "2026-11-10", 
+            "2026-11-17"
+        ], // і субота 24.10 (2026-10-24)
+        sub: 0
+    },
 
+    // --- 10:30-11:50 ---
+    {
+        day: 2,
+        time: "10:30-11:50",
+        name: "Проектування інформаційних систем (Л)",
+        info: "(доц. Гладка М.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253ATPmD9-2x-ev7X6k4sklG9ZO_Alne3sxs3dGitxd0S5E1%2540thread.tacv2/conversations?groupId%3D86c17497-45dd-404c-8d9d-1334a0867295%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474534398&usg=AOvVaw3F3vrE1FKgcCPMKmyBVobU", // Проектування інформаційних систем
+        dates: ["2026-09-15", "2026-09-22", "2026-09-29"],
+        sub: 0
+    },
+    {
+        day: 2,
+        time: "10:30-11:50",
+        name: "Теорія автоматичного управління (лаб)",
+        info: "8т (Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AClcZG5lMdMYt7hi3FdWOb1HRDIlSR0De1ZP-n-UHKME1%2540thread.tacv2/conversations?groupId%3D975bf78f-ec66-4188-b8e0-b9d6c23839a6%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474536054&usg=AOvVaw1qVoL5WVTI1EbAi64Ke15V", // ТАУ
+        dates: [
+            "2026-10-06", 
+            "2026-10-13", 
+            "2026-10-20", 
+            "2026-10-27", 
+            "2026-11-03", 
+            "2026-11-10", 
+            "2026-11-17"
+        ], // і субота 24.10 (2026-10-24)
+        sub: 0
+    },
+
+    // --- 12:10-13:30 ---
+    {
+        day: 2,
+        time: "12:10-13:30",
+        name: "Системи банківської безпеки (Л)",
+        info: "(проф. Трембовецький М.П.)",
+        link: "https://www.google.com/url?q=https://teams.cloud.microsoft/l/message/19:dk-4vCKZTiXJNHZw7mN2jztN0I5npKfSJxqLjNphlwY1@thread.tacv2/1788164600668?tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d%26groupId%3D6ada82b5-643d-4f99-946c-e7f0b2863588%26parentMessageId%3D1788164600668%26teamName%3D%25D0%25A1%25D0%25B8%25D1%2581%25D1%2582%25D0%25B5%25D0%25BC%25D0%25B8%2520%25D0%25B1%25D0%25B0%25D0%25BD%25D0%25BA%25D0%25BE%25D0%25B2%25D0%25BE%25D1%2597%2520%25D0%25B1%25D0%25B5%25D0%25B7%25D0%25BF%25D0%25B5%25D0%25BA%25D0%25B8%26channelName%3DGeneral%26createdTime%3D1788164600668&sa=D&source=editors&ust=1789416474537763&usg=AOvVaw00HtEs9BH8fD41MVPmmzK_", // СББ
+        dates: ["2026-09-15", "2026-09-22"], // і субота 19.09 (2026-09-19)
+        sub: 0
+    },
+    {
+        day: 2,
+        time: "12:10-13:30",
+        name: "Системи банківської безпеки (лаб)",
+        info: "8т (проф. Трембовецький М.П.)",
+        link: "https://www.google.com/url?q=https://teams.cloud.microsoft/l/message/19:dk-4vCKZTiXJNHZw7mN2jztN0I5npKfSJxqLjNphlwY1@thread.tacv2/1788164600668?tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d%26groupId%3D6ada82b5-643d-4f99-946c-e7f0b2863588%26parentMessageId%3D1788164600668%26teamName%3D%25D0%25A1%25D0%25B8%25D1%2581%25D1%2582%25D0%25B5%25D0%25BC%25D0%25B8%2520%25D0%25B1%25D0%25B0%25D0%25BD%25D0%25BA%25D0%25BE%25D0%25B2%25D0%25BE%25D1%2597%2520%25D0%25B1%25D0%25B5%25D0%25B7%25D0%25BF%25D0%25B5%25D0%25BA%25D0%25B8%26channelName%3DGeneral%26createdTime%3D1788164600668&sa=D&source=editors&ust=1789416474537763&usg=AOvVaw00HtEs9BH8fD41MVPmmzK_", // СББ
+        dates: [
+            "2026-09-29", 
+            "2026-10-06", 
+            "2026-10-13", 
+            "2026-10-20", 
+            "2026-10-27", 
+            "2026-11-03", 
+            "2026-11-10", 
+            "2026-11-17"
+        ],
+        sub: 0
+    },
+
+    // --- 13:40-15:00 ---
+    {
+        day: 2,
+        time: "13:40-15:00",
+        name: "Системи банківської безпеки (Л)",
+        info: "3т (проф. Трембовецький М.П.)",
+        link: "https://www.google.com/url?q=https://teams.cloud.microsoft/l/message/19:dk-4vCKZTiXJNHZw7mN2jztN0I5npKfSJxqLjNphlwY1@thread.tacv2/1788164600668?tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d%26groupId%3D6ada82b5-643d-4f99-946c-e7f0b2863588%26parentMessageId%3D1788164600668%26teamName%3D%25D0%25A1%25D0%25B8%25D1%2581%25D1%2582%25D0%25B5%25D0%25BC%25D0%25B8%2520%25D0%25B1%25D0%25B0%25D0%25BD%25D0%25BA%25D0%25BE%25D0%25B2%25D0%25BE%25D1%2597%2520%25D0%25B1%25D0%25B5%25D0%25B7%25D0%25BF%25D0%25B5%25D0%25BA%25D0%25B8%26channelName%3DGeneral%26createdTime%3D1788164600668&sa=D&source=editors&ust=1789416474541445&usg=AOvVaw2Ye94h4r1OnoA-cDF7ZmiH", // СББ
+        dates: ["2026-09-15", "2026-09-22"], // і субота 19.09 (2026-09-19)
+        sub: 0
+    },
+    {
+        day: 2,
+        time: "13:40-15:00",
+        name: "Системи банківської безпеки (лаб)2т+ (Пр) 6т",
+        info: "[29.09-17.11] (проф. Трембовецький М.П.)",
+        link: "https://www.google.com/url?q=https://teams.cloud.microsoft/l/message/19:dk-4vCKZTiXJNHZw7mN2jztN0I5npKfSJxqLjNphlwY1@thread.tacv2/1788164600668?tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d%26groupId%3D6ada82b5-643d-4f99-946c-e7f0b2863588%26parentMessageId%3D1788164600668%26teamName%3D%25D0%25A1%25D0%25B8%25D1%2581%25D1%2582%25D0%25B5%25D0%25BC%25D0%25B8%2520%25D0%25B1%25D0%25B0%25D0%25BD%25D0%25BA%25D0%25BE%25D0%25B2%25D0%25BE%25D1%2597%2520%25D0%25B1%25D0%25B5%25D0%25B7%25D0%25BF%25D0%25B5%25D0%25BA%25D0%25B8%26channelName%3DGeneral%26createdTime%3D1788164600668&sa=D&source=editors&ust=1789416474541445&usg=AOvVaw2Ye94h4r1OnoA-cDF7ZmiH", // СББ
+        dates: [
+            "2026-09-29", 
+            "2026-10-06", 
+            "2026-10-13", 
+            "2026-10-20", 
+            "2026-10-27", 
+            "2026-11-03", 
+            "2026-11-10", 
+            "2026-11-17"
+        ],
+        sub: 0
+    },
+    // СЕРЕДА (day: 3)
+
+    // --- 10:30-11:50 (дві пари в різний період) ---
+    {
+        day: 3,
+        time: "10:30-11:50",
+        name: "Теорія автоматичного управління (лаб)",
+        info: "8т (Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AClcZG5lMdMYt7hi3FdWOb1HRDIlSR0De1ZP-n-UHKME1%2540thread.tacv2/conversations?groupId%3D975bf78f-ec66-4188-b8e0-b9d6c23839a6%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474558213&usg=AOvVaw2vWp4lX9UIQFyuGgL-6ILM", // ТАУ
+        dates: [
+            "2026-10-07", 
+            "2026-10-14", 
+            "2026-10-21", 
+            "2026-10-28", 
+            "2026-11-04", 
+            "2026-11-11", 
+            "2026-11-18"
+        ], // і субота 31.10 (2026-10-31)
+        sub: 0
+    },
+    {
+        day: 3,
+        time: "10:30-11:50",
+        name: "Технологія створення програмних продуктів (лаб)",
+        info: "2т (доц. Кравченко О.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AhaSU_3hbsgI58chkDy8XYQiU6ivn54k1Z4i42O6VpbI1%2540thread.tacv2/conversations?groupId%3D4113c5a6-5a26-43e8-85b1-87f3114b8d0d%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474559633&usg=AOvVaw2OxebUU1XtJ_OxS-ji75SA", // Технології створення ПП
+        dates: ["2026-09-16", "2026-09-23"],
+        sub: 0
+    },
+
+    // --- 12:10-13:30 (одна пара) ---
+    {
+        day: 3,
+        time: "12:10-13:30",
+        name: "Іноземна мова (лаб)",
+        info: "10т (Красненко О.М.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AM-D3otABYH880uR3ETKK8HQuqNs3g8SROmZyHFjzkT01%2540thread.tacv2/conversations?groupId%3D5c2ea85e-43b3-403b-a148-db91a80236d6%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474561803&usg=AOvVaw34c2BWLEUPjrVa-JPVsnC_", // teams.microsoft.com
+        dates: [
+            "2026-09-16", 
+            "2026-09-23", 
+            "2026-09-30", 
+            "2026-10-07", 
+            "2026-10-14", 
+            "2026-10-21", 
+            "2026-10-28", 
+            "2026-11-04", 
+            "2026-11-11", 
+            "2026-11-18"
+        ], // і суботи: 26.09 (2026-09-26), 31.10 (2026-10-31)
+        sub: 0
+    },
+
+    // --- 13:40-15:00 (одна пара) ---
+    {
+        day: 3,
+        time: "13:40-15:00",
+        name: "Технологія створення програмних продуктів (Пр)",
+        info: "10т (доц. Кравченко О.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AhaSU_3hbsgI58chkDy8XYQiU6ivn54k1Z4i42O6VpbI1%2540thread.tacv2/conversations?groupId%3D4113c5a6-5a26-43e8-85b1-87f3114b8d0d%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474563563&usg=AOvVaw0uz0YW_ea5hZWMkP3mVt7T", // Технології створення ПП
+        dates: [
+            "2026-09-16", 
+            "2026-09-23", 
+            "2026-09-30", 
+            "2026-10-07", 
+            "2026-10-14", 
+            "2026-10-21", 
+            "2026-10-28", 
+            "2026-11-04", 
+            "2026-11-11", 
+            "2026-11-18"
+        ], // і суботи: 26.09 (2026-09-26), 31.10 (2026-10-31)
+        sub: 0
+    },
+
+    // --- 15:10-16:30 (одна пара) ---
+    {
+        day: 3,
+        time: "15:10-16:30",
+        name: "Технологія створення програмних продуктів (Пр)5т+ (лаб) 5т",
+        info: "(доц. Кравченко О.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AhaSU_3hbsgI58chkDy8XYQiU6ivn54k1Z4i42O6VpbI1%2540thread.tacv2/conversations?groupId%3D4113c5a6-5a26-43e8-85b1-87f3114b8d0d%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474565585&usg=AOvVaw3Y3ds_SS4ae32S4fHGZvJc", // Технології створення ПП
+        dates: [
+            "2026-09-16", 
+            "2026-09-23", 
+            "2026-09-30", 
+            "2026-10-07", 
+            "2026-10-14", 
+            "2026-10-21", 
+            "2026-10-28", 
+            "2026-11-04", 
+            "2026-11-11", 
+            "2026-11-18"
+        ], // і суботи: 26.09 (2026-09-26), 31.10 (2026-10-31)
+        sub: 0
+    },
+    // ЧЕТВЕР (day: 4)
+
+    // --- 09:00-10:20 (дві пари в різний період) ---
+    {
+        day: 4,
+        time: "09:00-10:20",
+        name: "Проектування інформаційних систем (лаб)",
+        info: "8т (доц. Гладка М.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253ATPmD9-2x-ev7X6k4sklG9ZO_Alne3sxs3dGitxd0S5E1%2540thread.tacv2/conversations?groupId%3D86c17497-45dd-404c-8d9d-1334a0867295%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474571697&usg=AOvVaw0nQ-KZw0Nu1nhbrD6mKGat", // Проектування інформаційних сис
+        dates: [
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08",
+            "2026-10-15",
+            "2026-10-22",
+            "2026-10-29"
+        ], // і субота 3.10 (2026-10-03)
+        sub: 0
+    },
+    {
+        day: 4,
+        time: "09:00-10:20",
+        name: "Теорія систем та системний аналіз (Пр)",
+        info: "3т (Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253APi674oI2F7i62XUbZfMtVpFEf_4FUAW_MzWPUxApPiU1%2540thread.tacv2/conversations?groupId%3Db1f50dfa-1515-4667-8439-5a3a8b928aee%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474572981&usg=AOvVaw1kXGxVxp2gccdPsNIY1BOR", // teams.microsoft.com
+        dates: [
+            "2026-11-05",
+            "2026-11-12",
+            "2026-11-19"
+        ],
+        sub: 0
+    },
+
+    // --- 10:30-11:50 (дві пари в різний період) ---
+    {
+        day: 4,
+        time: "10:30-11:50",
+        name: "Проектування інформаційних систем (лаб)",
+        info: "8т (доц. Гладка М.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253ATPmD9-2x-ev7X6k4sklG9ZO_Alne3sxs3dGitxd0S5E1%2540thread.tacv2/conversations?groupId%3D86c17497-45dd-404c-8d9d-1334a0867295%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474574746&usg=AOvVaw2PEI17tQX6nLk4pw1c91Al", // Проектування інформаційних сис
+        dates: [
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08",
+            "2026-10-15",
+            "2026-10-22",
+            "2026-10-29"
+        ], // і субота 3.10 (2026-10-03)
+        sub: 0
+    },
+    {
+        day: 4,
+        time: "10:30-11:50",
+        name: "Теорія автоматичного управління (лаб)",
+        info: "4т (Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AClcZG5lMdMYt7hi3FdWOb1HRDIlSR0De1ZP-n-UHKME1%2540thread.tacv2/conversations?groupId%3D975bf78f-ec66-4188-b8e0-b9d6c23839a6%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474576692&usg=AOvVaw0uwBieHhXo35FmPTb1Gocw", // ТАУ
+        dates: [
+            "2026-11-05",
+            "2026-11-12",
+            "2026-11-19"
+        ], // і субота 7.11 (2026-11-07)
+        sub: 0
+    },
+
+    // --- 12:10-13:30 (одна пара) ---
+    {
+        day: 4,
+        time: "12:10-13:30",
+        name: "Філософія (С)",
+        info: "10т Савинська І.В. хз чи до 05.11 чи до 19.11",
+        link: "https://www.google.com/url?q=https://meet.google.com/jba-ugce-ysm?pli%3D1&sa=D&source=editors&ust=1789416474579512&usg=AOvVaw0ZMu1hG2XdpNkSV_TZKyb2",
+        dates: [
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08",
+            "2026-10-15",
+            "2026-10-22",
+            "2026-10-29",
+            "2026-11-05",
+            "2026-11-12",
+            "2026-11-19"
+        ],
+        sub: 0
+    },
+
+    // --- 13:40-15:00 (одна пара) ---
+    {
+        day: 4,
+        time: "13:40-15:00",
+        name: "Кібернетична безпека підприємства (лаб)",
+        info: "10т (доц. Борисенко І.І.) хз чи до 05.11 чи до 19.11",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/324553793992041?p%3DWuRiPSEJsfqwU6ZB1i&sa=D&source=editors&ust=1789416474582369&usg=AOvVaw1nqgsusvjLSXIYuZ6tU9bF", // teams.microsoft
+        dates: [
+            "2026-09-17",
+            "2026-09-24",
+            "2026-10-01",
+            "2026-10-08",
+            "2026-10-15",
+            "2026-10-22",
+            "2026-10-29",
+            "2026-11-05",
+            "2026-11-12",
+            "2026-11-19"
+        ], // і суботи: 3.10 (2026-10-03), 7.11 (2026-11-07)
+        sub: 0
+    },
+    // П'ЯТНИЦЯ (day: 5)
+    // Вільний день — пар немає
+
+    // СУБОТА (day: 6)
+
+    // --- 09:00-10:20 ---
+    {
+        day: 6,
+        time: "09:00-10:20",
+        name: "Теорія систем та системний аналіз (Л)",
+        info: "(Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253APi674oI2F7i62XUbZfMtVpFEf_4FUAW_MzWPUxApPiU1%2540thread.tacv2/conversations?groupId%3Db1f50dfa-1515-4667-8439-5a3a8b928aee%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474514487&usg=AOvVaw0EMiLLSbrKeTt9nm5TYksU", // teams.microsoft.com
+        dates: ["2026-10-17"],
+        sub: 0
+    },
+    {
+        day: 6,
+        time: "09:00-10:20",
+        name: "Теорія систем та системний аналіз (Пр)",
+        info: "(Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253APi674oI2F7i62XUbZfMtVpFEf_4FUAW_MzWPUxApPiU1%2540thread.tacv2/conversations?groupId%3Db1f50dfa-1515-4667-8439-5a3a8b928aee%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474532969&usg=AOvVaw3wrklBY4H-jauu2ZOAvQDY", // teams.microsoft.com
+        dates: ["2026-10-24"],
+        sub: 0
+    },
+    {
+        day: 6,
+        time: "09:00-10:20",
+        name: "Проектування інформаційних систем (лаб)",
+        info: "(доц. Гладка М.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253ATPmD9-2x-ev7X6k4sklG9ZO_Alne3sxs3dGitxd0S5E1%2540thread.tacv2/conversations?groupId%3D86c17497-45dd-404c-8d9d-1334a0867295%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474571697&usg=AOvVaw0nQ-KZw0Nu1nhbrD6mKGat", // Проектування інформаційних сис
+        dates: ["2026-10-03"],
+        sub: 0
+    },
+
+    // --- 10:30-11:50 ---
+    {
+        day: 6,
+        time: "10:30-11:50",
+        name: "Проектування інформаційних систем (лаб)",
+        info: "(доц. Гладка М.В.)",
+        link: "", // Проектування інформаційних сис
+        dates: ["2026-10-03"],
+        sub: 0
+    },
+    {
+        day: 6,
+        time: "10:30-11:50",
+        name: "Теорія автоматичного управління (лаб)",
+        info: "(Проф. Дружинін В.А.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AClcZG5lMdMYt7hi3FdWOb1HRDIlSR0De1ZP-n-UHKME1%2540thread.tacv2/conversations?groupId%3D975bf78f-ec66-4188-b8e0-b9d6c23839a6%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474518604&usg=AOvVaw3MRELZSI9I9CRBHvE0Az5k", // ТАУ
+        dates: [ "2026-10-24", "2026-10-31", "2026-11-07"],
+        sub: 0
+
+    },
+
+    // --- 12:10-13:30 ---
+    {
+        day: 6,
+        time: "12:10-13:30",
+        name: "Системи банківської безпеки (Л)",
+        info: "(проф. Трембовецький М.П.)",
+        link: "https://www.google.com/url?q=https://teams.cloud.microsoft/l/message/19:dk-4vCKZTiXJNHZw7mN2jztN0I5npKfSJxqLjNphlwY1@thread.tacv2/1788164600668?tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d%26groupId%3D6ada82b5-643d-4f99-946c-e7f0b2863588%26parentMessageId%3D1788164600668%26teamName%3D%25D0%25A1%25D0%25B8%25D1%2581%25D1%2582%25D0%25B5%25D0%25BC%25D0%25B8%2520%25D0%25B1%25D0%25B0%25D0%25BD%25D0%25BA%25D0%25BE%25D0%25B2%25D0%25BE%25D1%2597%2520%25D0%25B1%25D0%25B5%25D0%25B7%25D0%25BF%25D0%25B5%25D0%25BA%25D0%25B8%26channelName%3DGeneral%26createdTime%3D1788164600668&sa=D&source=editors&ust=1789416474537763&usg=AOvVaw00HtEs9BH8fD41MVPmmzK_", // СББ
+        dates: ["2026-09-19"],
+        sub: 0
+    },
+    {
+        day: 6,
+        time: "12:10-13:30",
+        name: "Кібернетична безпека підприємства (Л)",
+        info: "(доц. Борисенко І.І.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/324553793992041?p%3DWuRiPSEJsfqwU6ZB1i&sa=D&source=editors&ust=1789416474519697&usg=AOvVaw37fsDCFh7E_nDfgmJ-9AlH", // teams.microsoft
+        dates: ["2026-10-17"],
+        sub: 0
+    },
+    {
+        day: 6,
+        time: "12:10-13:30",
+        name: "Іноземна мова (лаб)",
+        info: "(Красненко О.М.)",
+        link: "", // teams.microsoft.com
+        dates: ["2026-09-26", "2026-10-31"],
+        sub: 0
+    },
+
+    // --- 13:40-15:00 ---
+    {
+        day: 6,
+        time: "13:40-15:00",
+        name: "Системи банківської безпеки (Л)",
+        info: "(проф. Трембовецький М.П.)",
+        link: "https://www.google.com/url?q=https://teams.cloud.microsoft/l/message/19:dk-4vCKZTiXJNHZw7mN2jztN0I5npKfSJxqLjNphlwY1@thread.tacv2/1788164600668?tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d%26groupId%3D6ada82b5-643d-4f99-946c-e7f0b2863588%26parentMessageId%3D1788164600668%26teamName%3D%25D0%25A1%25D0%25B8%25D1%2581%25D1%2582%25D0%25B5%25D0%25BC%25D0%25B8%2520%25D0%25B1%25D0%25B0%25D0%25BD%25D0%25BA%25D0%25BE%25D0%25B2%25D0%25BE%25D1%2597%2520%25D0%25B1%25D0%25B5%25D0%25B7%25D0%25BF%25D0%25B5%25D0%25BA%25D0%25B8%26channelName%3DGeneral%26createdTime%3D1788164600668&sa=D&source=editors&ust=1789416474541445&usg=AOvVaw2Ye94h4r1OnoA-cDF7ZmiH", // СББ
+        dates: ["2026-09-19"],
+        sub: 0
+    },
+    {
+        day: 6,
+        time: "13:40-15:00",
+        name: "Технологія створення програмних продуктів (Пр)",
+        info: "(доц. Кравченко О.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AhaSU_3hbsgI58chkDy8XYQiU6ivn54k1Z4i42O6VpbI1%2540thread.tacv2/conversations?groupId%3D4113c5a6-5a26-43e8-85b1-87f3114b8d0d%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474565585&usg=AOvVaw3Y3ds_SS4ae32S4fHGZvJc", // Технології створення ПП
+        dates: ["2026-09-26", "2026-10-31"],
+        sub: 0
+    },
+    {
+        day: 6,
+        time: "13:40-15:00",
+        name: "Кібернетична безпека підприємства (лаб)",
+        info: "(доц. Борисенко І.І.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/meet/324553793992041?p%3DWuRiPSEJsfqwU6ZB1i&sa=D&source=editors&ust=1789416474582369&usg=AOvVaw1nqgsusvjLSXIYuZ6tU9bF", // teams.microsoft
+        dates: ["2026-10-03", "2026-11-07"],
+        sub: 0
+    },
+
+    // --- 15:10-16:30 ---
+    {
+        day: 6,
+        time: "15:10-16:30",
+        name: "Технологія створення програмних продуктів (Пр) / (лаб)",
+        info: "(доц. Кравченко О.В.)",
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AhaSU_3hbsgI58chkDy8XYQiU6ivn54k1Z4i42O6VpbI1%2540thread.tacv2/conversations?groupId%3D4113c5a6-5a26-43e8-85b1-87f3114b8d0d%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1789416474565585&usg=AOvVaw3Y3ds_SS4ae32S4fHGZvJc", // Технології створення ПП
+        dates: ["2026-09-26", "2026-10-31"],
+        sub: 0
+    }
 ];
 
 let currentView = 'day';
@@ -106,10 +592,10 @@ function renderWeek(date, sub) {
 
 function renderFull(sub) {
     let html = '<div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">';
-    html += '<h3 style="text-align:center;">Повний розклад ІР-21 за датами</h3>';
-    
-    let current = new Date("2026-01-26");
-    let endDate = new Date("2026-06-07");
+    html += '<h3 style="text-align:center;">Повний розклад ІР-3 1 за датами</h3>';
+
+    let current = new Date("2026-09-14");
+    let endDate = new Date("2026-12-06");
     let currentMonth = -1;
 
     while (current <= endDate) {
