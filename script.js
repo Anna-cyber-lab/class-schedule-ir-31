@@ -501,7 +501,7 @@ const scheduleData = [
         time: "12:10-13:30",
         name: "Іноземна мова (лаб)",
         info: "(Красненко О.М.)",
-        link: https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AM-D3otABYH880uR3ETKK8HQuqNs3g8SROmZyHFjzkT01%2540thread.tacv2/conversations?groupId%3D5c2ea85e-43b3-403b-a148-db91a80236d6%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1791132675286885&usg=AOvVaw3bbuDROqlUw6nMQn-dyS3V", // teams.microsoft.com
+        link: "https://www.google.com/url?q=https://teams.microsoft.com/l/team/19%253AM-D3otABYH880uR3ETKK8HQuqNs3g8SROmZyHFjzkT01%2540thread.tacv2/conversations?groupId%3D5c2ea85e-43b3-403b-a148-db91a80236d6%26tenantId%3D11bdc4c0-f87d-4025-84ee-777d1d7ffc4d&sa=D&source=editors&ust=1791132675286885&usg=AOvVaw3bbuDROqlUw6nMQn-dyS3V", // teams.microsoft.com
         dates: ["2026-09-26", "2026-10-31"],
         sub: 0
     },
