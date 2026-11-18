@@ -310,29 +310,49 @@ const SheetSchedule = (() => {
     }
 
     // ---- головна функція -----------------------------------------------
-    // Завантажує всю таблицю один раз (усі аркуші)
-    async function open(url) {
+    // Відкриває таблицю: список аркушів + календар. Самі аркуші вантажаться лише коли потрібні.
+    async function open(url, onProgress) {
         const base = baseOf(url);
-        const sheetUrl = gid => `${base}/pubhtml/sheet?headers=false&gid=${gid}`;
         const mainHtml = await get(base + '/pubhtml');
         const ym = mainHtml.match(/(20\d\d)\s*[-–—]\s*20\d\d/);
         const now = new Date();
         const year = ym ? +ym[1] : (now.getMonth() >= 7 ? now.getFullYear() : now.getFullYear() - 1);
-
         let tabs = tabsOf(mainHtml);
         if (!tabs.length) tabs = [{ name: '', gid: (url.match(/gid=(\d+)/) || [])[1] || '0' }];
+        const wb = { base, tabs, year, cache: new Map(), loaded: 0, onProgress };
+        wb.calIdx = tabs.findIndex(t => /календар/i.test(t.name));
+        wb.weeks = wb.calIdx >= 0 ? calendarOf(await sheet(wb, wb.calIdx), year) : [];
+        return wb;
+    }
 
-        const grids = await Promise.all(tabs.map(t => get(sheetUrl(t.gid)).then(h => gridOf(parseHtml(h))).catch(() => [])));
-        const calIdx = tabs.findIndex(t => /календар/i.test(t.name));
-        const weeks = calIdx >= 0 ? calendarOf(grids[calIdx], year) : [];
-        return { tabs, grids, calIdx, weeks, year };
+    // Один аркуш (з кешем — кожен аркуш вантажиться лише раз)
+    function sheet(wb, i) {
+        if (!wb.cache.has(i)) {
+            const url = `${wb.base}/pubhtml/sheet?headers=false&gid=${wb.tabs[i].gid}`;
+            wb.cache.set(i, get(url).then(h => gridOf(parseHtml(h))).catch(() => [])
+                .then(g => { wb.loaded++; if (wb.onProgress) wb.onProgress(wb.loaded, wb.tabs.length); return g; }));
+        }
+        return wb.cache.get(i);
+    }
+    const sheetIdx = wb => wb.tabs.map((t, i) => i).filter(i => i !== wb.calIdx);
+
+    // Аркуші, де ймовірно є група: за назвою спеціальності в назві аркуша («ВЕБ, ІР, ІРма») + «робочі суботи»
+    function relevantIdx(wb, group) {
+        const spec = norm(group.split('-')[0] || group).replace(/\d+$/, '');
+        const hit = sheetIdx(wb).filter(i => {
+            const name = wb.tabs[i].name;
+            if (/субот/i.test(name)) return true;
+            return name.split(/[,;\/\s]+/).some(tok => tok && norm(tok) === spec);
+        });
+        return hit.some(i => !/субот/i.test(wb.tabs[i].name)) ? hit : sheetIdx(wb);
     }
 
     // Список усіх груп, що є в таблиці: «група ІР-31», «група ІПЗ-44+фмб» → ІР-31, ІПЗ-44
-    function groups(wb) {
+    async function groups(wb) {
+        const idx = sheetIdx(wb).filter(i => !/^\s*\d+\s*тиж/i.test(wb.tabs[i].name));  // тижневі аркуші дублюють основні
+        const grids = await Promise.all(idx.map(i => sheet(wb, i)));
         const map = new Map();
-        wb.grids.forEach((grid, i) => {
-            if (i === wb.calIdx) return;
+        for (const grid of grids)
             for (let r = 0; r < Math.min(grid.length, 15); r++)
                 for (const x of originsInRow(grid[r], r)) {
                     if (/підгруп/i.test(x.text)) continue;
@@ -342,24 +362,25 @@ const SheetSchedule = (() => {
                     const k = norm(code);
                     if (!map.has(k)) map.set(k, code);
                 }
-        });
         return [...map.values()].sort((a, b) => a.localeCompare(b, 'uk', { numeric: true }));
     }
 
-    // Розклад однієї групи з уже завантаженої таблиці
-    function schedule(wb, group) {
-        const { tabs, grids, calIdx, weeks, year } = wb;
-        const teaching = weeks.filter(w => !w.session);
+    // Розклад однієї групи
+    async function schedule(wb, group) {
         const T = norm(group);
         if (!T) throw new Error('Оберіть групу');
-        const found = [];
-        tabs.forEach((t, i) => {
-            if (i === calIdx) return;
-            const g = findGroup(grids[i], T);
-            if (g) found.push({ tab: t, grid: grids[i], g });
-        });
+        const collect = async idx => {
+            const grids = await Promise.all(idx.map(i => sheet(wb, i)));
+            const found = [];
+            idx.forEach((i, k) => { const g = findGroup(grids[k], T); if (g) found.push({ tab: wb.tabs[i], grid: grids[k], g }); });
+            return found;
+        };
+        let found = await collect(relevantIdx(wb, group));
+        if (!found.some(f => !/субот/i.test(f.tab.name))) found = await collect(sheetIdx(wb));   // запасний варіант: шукаємо всюди
         if (!found.length) throw new Error(`Групу «${group}» не знайдено в таблиці`);
 
+        const { weeks, year } = wb;
+        const teaching = weeks.filter(w => !w.session);
         const weekNo = t => +((t.name.match(/^\s*(\d+)\s*тиж/i) || [])[1] || 0);
         const maxWeek = Math.max(0, ...found.map(f => weekNo(f.tab)));
         const regStart = teaching[maxWeek] ? teaching[maxWeek].monday : null;
@@ -430,7 +451,7 @@ function currentGroup() {
 // Заповнюємо список груп, розбиваючи за спеціальностями (ІР, ВЕБ, КБ…)
 function fillGroups(list) {
     const sel = $('group-select');
-    const want = LS.get('groupName', DEFAULT_GROUP);
+    const want = sel.value || LS.get('groupName', DEFAULT_GROUP);
     const bySpec = {};
     for (const g of list) (bySpec[g.split('-')[0]] = bySpec[g.split('-')[0]] || []).push(g);
     sel.innerHTML = Object.keys(bySpec).sort((a, b) => a.localeCompare(b, 'uk')).map(spec =>
@@ -465,17 +486,20 @@ function showMeta() {
         (approx ? ` · ⚠ у ${approx} пар дати орієнтовні` : ''));
 }
 
-// Показати розклад обраної групи (таблиця вже завантажена)
-function showGroup(group) {
+// Показати розклад обраної групи
+let showToken = 0;
+async function showGroup(group) {
     LS.set('groupName', group);
+    const my = ++showToken;
     try {
-        const { entries, meta } = SheetSchedule.schedule(workbook, group);
+        const { entries, meta } = await SheetSchedule.schedule(workbook, group);
+        if (my !== showToken) return;               // користувач уже обрав іншу групу
         scheduleData = entries.filter(e => e.dates.length);
         scheduleMeta = meta;
         LS.set('scheduleCache', JSON.stringify({ entries: scheduleData, meta }));
         applyGroupUI(); showMeta(); refreshView();
     } catch (e) {
-        setStatus('Помилка: ' + e.message, true);
+        if (my === showToken) setStatus('Помилка: ' + e.message, true);
     }
 }
 
@@ -485,11 +509,15 @@ async function loadWorkbook() {
     if (btn) btn.disabled = true;
     setStatus('Завантажую розклад з таблиці…');
     try {
-        workbook = await SheetSchedule.open(SHEET_URL);
-        const list = SheetSchedule.groups(workbook);
+        workbook = await SheetSchedule.open(SHEET_URL, (n, total) => {
+            if (!scheduleMeta || btn.disabled) setStatus(`Завантажую розклад з таблиці… (${n} з ${total})`);
+        });
+        await showGroup(currentGroup());            // спершу — розклад обраної групи (лише потрібні аркуші)
+        if (btn) btn.disabled = false;
+        const list = await SheetSchedule.groups(workbook);   // потім у фоні — повний список груп
         LS.set('groupsCache', JSON.stringify(list));
         fillGroups(list);
-        showGroup(currentGroup());
+        showMeta();
     } catch (e) {
         setStatus('Не вдалося завантажити таблицю: ' + e.message + (scheduleData.length ? ' — показано збережену версію' : ''), true);
     } finally {
@@ -610,7 +638,8 @@ window.onload = () => {
     // спершу показуємо збережену копію (працює й без інтернету), потім оновлюємо з таблиці
     try {
         const list = JSON.parse(LS.get('groupsCache', 'null'));
-        if (list && list.length) fillGroups(list);
+        // поки повний список не завантажився — показуємо хоча б поточну групу
+        fillGroups(list && list.length ? list : [LS.get('groupName', DEFAULT_GROUP)]);
         const c = JSON.parse(LS.get('scheduleCache', 'null'));
         if (c && c.entries && c.meta) { scheduleData = c.entries; scheduleMeta = c.meta; showMeta(); }
     } catch (e) { }
