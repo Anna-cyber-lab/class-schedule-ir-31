@@ -63,9 +63,42 @@
             margin-bottom: 18px;
         }
 
-        #subgroup-select {
-            display: none;
+        .group-row { display: flex; gap: 8px; margin-bottom: 10px; }
+        .text-input, #subgroup-select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-card);
+            background-color: var(--bg-card);
+            color: var(--ice-accent);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
         }
+        .text-input:focus, #subgroup-select:focus { border-color: var(--primary); }
+        #group-select { flex: 1; color-scheme: dark; cursor: pointer; }
+        .load-btn {
+            padding: 12px 16px;
+            font-size: 1.05rem;
+            border-radius: 8px;
+            border: 1px solid var(--primary);
+            background-color: #1a2a2d;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .load-btn:hover { background-color: var(--primary); }
+        .load-btn:disabled { opacity: 0.6; cursor: wait; }
+        #subgroup-select { display: none; margin-bottom: 10px; color-scheme: dark; }
+        .sub-badge {
+            font-size: 0.72rem; font-weight: 500; margin-left: 8px; padding: 2px 8px;
+            border-radius: 10px; background: #1a2a2d; color: var(--link-color); border: 1px solid var(--border-card);
+        }
+        .lesson-card.approx { border-left-color: #b38a3e; }
+        .lesson-warn { margin-top: 8px; font-size: 0.78rem; color: #c9a25a; }
 
         input[type="date"] {
             width: 100%;
@@ -197,10 +230,12 @@
     </div>
 
     <div class="controls">
+        <div class="group-row">
+            <select id="group-select" class="text-input"><option value="">Завантаження груп…</option></select>
+            <button id="reload-btn" class="load-btn" type="button" title="Оновити розклад з таблиці">⟳</button>
+        </div>
         <select id="subgroup-select" onchange="refreshView()">
-            <option value="0" selected>Спільна</option>
-            <option value="1">1 Підгрупа</option>
-            <option value="2">2 Підгрупа</option>
+            <option value="0" selected>Усі підгрупи</option>
         </select>
         <input type="date" id="date-picker" onchange="setView('day')">
     </div>
@@ -208,6 +243,7 @@
     <div class="tabs">
         <div class="tab active" id="tab-day" onclick="setView('day')">Сьогодні / Дата</div>
         <div class="tab" id="tab-week" onclick="setView('week')">На тиждень</div>
+        <div class="tab" id="tab-full" onclick="setView('full')">Весь семестр</div>
     </div>
 
     <div id="content-area"></div>
